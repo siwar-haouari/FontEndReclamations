@@ -1,0 +1,114 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row mt-2">
+      <div class="col">
+      <h2 class="text-center">Ajouter reclamation</h2>
+    </div>
+  </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body">
+      <form [formGroup]="AdministrativeDetail" id="form1">
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Sujet</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" formControlName="sujet" name="sujet" required  id="sujet" placeholder="sujet reclamation" />
+          </div>
+
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-message">Description</label>
+          <div class="col-sm-10">
+            <textarea
+              id="basic-default-message"
+              class="form-control"
+              placeholder="description reclamation..."
+              aria-label="Hi, Do you have a moment to talk Joe?"
+              aria-describedby="basic-icon-default-message2"
+              formControlName="description" name="description"
+            ></textarea>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Type de reclamation</label>
+          <div class="col-sm-10">
+            <div class="row">
+          <div class="col">
+            <input  type = "radio" name = "sh" id = "hi" value="hide" checked />
+            <label class="col-form-label ml-3" for="basic-default-name">Administrative</label>
+          </div>
+          <div class="col">
+            <input type = "radio" name = "sh" id = "sh" value = "show"/>
+            <label class="col-form-label ml-3" for="basic-default-name" >Pedagogique</label>
+          </div>
+        </div>
+        </div>
+      </div>
+        <div class="row justify-content-end">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary" (click)="addAdministrative()">Envoyer</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Form pedagogique -->
+      <form [formGroup]="PedagogiqueDetail" id="form2">
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Sujetp</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" formControlName="sujet" id="basic-default-name" placeholder="sujet reclamation" />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-message">Descriptionp</label>
+          <div class="col-sm-10">
+            <textarea
+              id="basic-default-message"
+              class="form-control"
+              placeholder="description reclamation..."
+              aria-label="Hi, Do you have a moment to talk Joe?"
+              aria-describedby="basic-icon-default-message2"
+              formControlName="description" name="description"
+            ></textarea>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Type de reclamation</label>
+          <div class="col-sm-10">
+            <div class="row">
+          <div class="col">
+            <input  type = "radio" name = "sh" id = "hi" value="hide" checked/>
+            <label class="col-form-label ml-3" for="basic-default-name">Administrative</label>
+          </div>
+          <div class="col">
+            <input type = "radio" name = "sh" id = "sh" value = "show"/>
+            <label class="col-form-label ml-3" for="basic-default-name" >Pedagogique</label>
+          </div>
+        </div>
+        </div>
+      </div>
+       <!-- select enseignant -->
+       <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="basic-default-name">Enseignant</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="enseignant"  id="enseignant">
+            <option>Selectionner un enseignant</option>
+            <option  *ngFor="let Enseignant of EnseignantList" value="{{Enseignant.id}}">{{Enseignant.prenom}} {{Enseignant.nom}} - specialité : {{Enseignant.specialite}}</option>
+          </select>
+        </div>
+      </div>
+      <!-- select enseignant -->
+        <div class="row justify-content-end">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary" (click)="addPedagogique()">Envoyer</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+

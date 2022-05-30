@@ -1,0 +1,200 @@
+<!-- groupe -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row mt-2">
+      <div class="col-8">
+      <h2 class=" font-weight-bold text-primary">Liste des Etudiants</h2>
+    </div>
+    <div class="col-4">
+      <a  class="ajouter btn btn-success "  data-bs-toggle="modal" data-bs-target="#addEtudiant" type="submit"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i> <span>Ajouter un groupe</span></a>
+    </div>
+  </div>
+  </div>
+
+  <div class="card-body">
+      <div class="table-responsive">
+        <form class="search-dash  form-inline  mb-4" [formGroup]="EtudiantDetail">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  formControlName="nom">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        </form>
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                      <th>ID</th>
+                      <th>CIN </th>
+                      <th>Nom </th>
+                      <th>Prenom </th>
+                      <th>Matricule </th>
+                      <th>username </th>
+                      <th>email </th>
+                      <th>groupe</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let Etudiant of EtudiantList">
+                  <td>{{Etudiant.id}}</td>
+                  <td>{{Etudiant.cin}}</td>
+                  <td>{{Etudiant.nom}}</td>
+                  <td>{{Etudiant.prenom}}</td>
+                  <td>{{Etudiant.matricule}}</td>
+                  <td>{{Etudiant.username}}</td>
+                  <td>{{Etudiant.email}}</td>
+                  <td>{{Etudiant.groupe?.nom}}</td>
+                      <td>
+
+              <button type="button" class="btn btn-warning mr-2" data-bs-toggle="modal" data-bs-target="#editEtudiant" (click)="editEtudiant(Etudiant)"><i class="fa fa-edit" aria-hidden="true"></i> </button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+                                <!--Delete Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    voulez vous supprimer cet etudiant?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="deleteEtudiant(Etudiant)">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                  </tr>
+
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+
+<!-- groupe -->
+<!-- Add Groupe modal -->
+<div class="modal fade" id="addEtudiant" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Etudiant</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <form [formGroup]="EtudiantDetail">
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">CIN </label>
+                  <input type="number" formControlName="cin" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nom </label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Prenom </label>
+                  <input type="text" formControlName="prenom" class="form-control"  aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">matricule </label>
+                  <input type="text" formControlName="matricule" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Groupe </label>
+                  <select class="form-control" id="exampleFormControlSelect1" formControlName="groupe"  id="groupe" >
+                    <option>selectionner un groupe</option>
+                    <option  *ngFor="let Groupe of GroupeList" value="{{Groupe.id}}" >{{Groupe.nom}}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">username </label>
+                  <input type="text" formControlName="username" class="form-control" id="nom"aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">email </label>
+                  <input type="email" formControlName="email" class="form-control" id="nom"aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">password </label>
+                  <input type="text" formControlName="password" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEtudiant()">Add Etudiant</button>
+                </div>
+            </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Groupe modal -->
+<div class="modal fade" id="editEtudiant" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Etudiant details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="EtudiantDetail">
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">CIN </label>
+              <input type="text" formControlName="cin" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nom </label>
+              <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Prenom </label>
+              <input type="text" formControlName="prenom" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">matricule </label>
+              <input type="text" formControlName="matricule" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Groupe </label>
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="groupe"  id="groupe" >
+                <option>selectionner un groupe</option>
+                <option  *ngFor="let Groupe of GroupeList" value="{{Groupe.id}}" >{{Groupe.nom}}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">username </label>
+              <input type="text" formControlName="username" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">email </label>
+              <input type="email" formControlName="email" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">password </label>
+              <input type="text" formControlName="password" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-success"  data-bs-dismiss="modal" (click)="updateEtudiant()">Update </button>
+                </div>
+            </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

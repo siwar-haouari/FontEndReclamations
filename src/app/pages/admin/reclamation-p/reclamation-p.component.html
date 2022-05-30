@@ -1,0 +1,77 @@
+<!-- groupe -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row mt-2">
+      <div class="col-8">
+      <h2 class=" font-weight-bold text-primary">Liste des Reclamations pedagogique</h2>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="card-body">
+      <div class="table-responsive">
+        <form class="search-dash  form-inline  mb-4"  [formGroup]="PedagogiqueDetail">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  formControlName="sujet">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        </form>
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                      <th>ID</th>
+                      <th>sujet </th>
+                      <td>date</td>
+                      <th>description </th>
+                      <th>Enseignant </th>
+                      <th>etat </th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pedagogique of PedagogiqueList">
+                    <td>{{pedagogique.id}}</td>
+                    <td>{{pedagogique.sujet}}</td>
+                    <td>12 may 2022</td>
+                    <td>{{pedagogique.description}}</td>
+                    <td>{{pedagogique.enseignant?.nom}}</td>
+                    <td>  <span class="badge badge-warning rounded-pill d-inline">{{pedagogique.etat}}</span></td>
+                      <td>
+                        <button type="button" class="btn btn-success mr-2" (click)="traiterPedagogique(pedagogique)" id="traiter"><i class="fa fa-check"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+                      <!--Delete Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Supprimer reclamation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    voulez vous supprimer ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">supprimer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                  </tr>
+
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<!-- groupe -->
+
+
+
+
+
+
+

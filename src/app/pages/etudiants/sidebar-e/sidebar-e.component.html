@@ -1,0 +1,60 @@
+ <!-- Sidebar -->
+ <ul class="navbar-nav bge sidebar sidebar-dark accordion" id="accordionSidebar">
+
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/dashbordetudiant">
+      <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">Dashboard Etudiant</div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active" routerLink="/dashbordetudiant">
+      <a class="nav-link">
+          <i class="fas fa-fw fa-tachometer-alt mr-2"></i>
+          <span>Dashboard</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+  </div>
+
+  <!-- Nav Item - Pages reclamations -->
+  <li class="nav-item">
+      <a class="nav-link collapsed"  data-toggle="collapse" data-target="#collapseTwo"
+          aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog mr-2"></i>
+          <span>Reclamations</span>
+      </a>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">reclamations</h6>
+            <a class="collapse-item"  routerLink="ajouterreclamation"> Ajouter reclamation</a>
+            <a class="collapse-item" routerLink="reclamation">reclamation administrative</a>
+            <a class="collapse-item" routerLink="reclamationp">reclamation pedagogique</a>
+
+        </div>
+    </div>
+
+  </li>
+
+
+
+
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+
+
+
+
+</ul>
+<!-- End of Sidebar -->

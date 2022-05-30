@@ -1,0 +1,90 @@
+<body id="page-top" *ngIf="showDashboardEnseignant">
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+ <app-sidebare-enseignant></app-sidebare-enseignant>
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <app-header></app-header>
+
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+
+
+
+
+              <!-- Page Heading -->
+
+
+              <!-- Content Row -->
+
+
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <div class="row mt-2">
+                    <div class="col">
+                    <h2 class="text-center">Liste des reclamations</h2>
+                  </div>
+                </div>
+                </div>
+                <div class="card-body" >
+                  <div class="card-body" >
+                                  <ul class="list list-inline" *ngFor="let pedagogique of PedagogiqueList">
+                                      <li class="d-flex justify-content-between">
+                                          <div class="d-flex flex-row align-items-center">
+                                              <div class="ml-2" >
+                                                  <h3 class="mb-0"> {{pedagogique.etudiant.groupe.nom}}</h3>
+                                                  <h3 class="mb-0"> {{pedagogique.sujet}}</h3>
+                                                  <h3 class="mb-0"> {{pedagogique.description}}</h3>
+
+                                                  <div class="d-flex flex-row mt-1 text-black-50 date-time">
+                                                      <div><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        <span class="ml-2">11 May 2022</span></div>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+
+
+                                      </li>
+
+                                  </ul>
+
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+              <!-- Content Row -->
+          </div>
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+
+       <app-footer></app-footer>
+      <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- End of Topbar -->
+
+</body>
+
+

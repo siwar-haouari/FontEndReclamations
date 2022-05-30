@@ -1,0 +1,177 @@
+<!-- groupe -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row mt-2">
+      <div class="col-8">
+      <h2 class=" font-weight-bold text-primary">Liste des enseignants</h2>
+    </div>
+    <div class="col-4">
+      <a  class="ajouter btn btn-success "  data-bs-toggle="modal" data-bs-target="#addEnseignant" type="submit"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i> <span>Ajouter un groupe</span></a>
+    </div>
+  </div>
+  </div>
+
+  <div class="card-body">
+      <div class="table-responsive">
+        <form class="search-dash  form-inline  mb-4"  [formGroup]="EnseignantDetail">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  formControlName="nom">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        </form>
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                      <th>ID</th>
+                      <th>CIN </th>
+                      <th>Nom </th>
+                      <th>Prenom </th>
+                      <th>Type contact </th>
+                      <th>specialité </th>
+                      <th>username </th>
+                      <th>email </th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let enseignant of EnseignantList">
+                  <td>{{enseignant.id}}</td>
+                  <td>{{enseignant.cin}}</td>
+                  <td>{{enseignant.nom}}</td>
+                  <td>{{enseignant.prenom}}</td>
+                  <td>{{enseignant.typeContrat}}</td>
+                  <td>{{enseignant.specialite}}</td>
+                  <td>{{enseignant.username}}</td>
+                  <td>{{enseignant.email}}</td>
+
+                      <td>
+
+              <button type="button" class="btn btn-warning mr-2" data-bs-toggle="modal" data-bs-target="#editEnseignant" (click)="editEnseignant(enseignant)"><i class="fa fa-edit" aria-hidden="true"></i> </button>
+              <button type="button" class="btn btn-danger"  (click)="deleteEnseignant(enseignant)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </td>
+                  </tr>
+
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<!-- groupe -->
+
+
+
+
+<!-- Add Groupe modal -->
+<div class="modal fade" id="addEnseignant" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new enseignant</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <form [formGroup]="EnseignantDetail">
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">CIN </label>
+                  <input type="number" formControlName="cin" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nom </label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Prenom </label>
+                  <input type="text" formControlName="prenom" class="form-control"  aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Specialite </label>
+                  <input type="text" formControlName="specialite" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Type contrat </label>
+                  <input type="text" formControlName="typeContrat" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">username </label>
+                  <input type="text" formControlName="username" class="form-control" id="nom"aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">email </label>
+                  <input type="email" formControlName="email" class="form-control" id="nom"aria-describedby="nomHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">password </label>
+                  <input type="text" formControlName="password" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEnseignant()">Add Groupe</button>
+                </div>
+            </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Groupe modal -->
+<div class="modal fade" id="editEnseignant" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Enseignant details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="EnseignantDetail">
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">CIN </label>
+              <input type="text" formControlName="cin" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nom </label>
+              <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Prenom </label>
+              <input type="text" formControlName="prenom" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Specialite </label>
+              <input type="text" formControlName="specialite" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Type contrat </label>
+              <input type="text" formControlName="typeContrat" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">username </label>
+              <input type="text" formControlName="username" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">email </label>
+              <input type="email" formControlName="email" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">password </label>
+              <input type="text" formControlName="password" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-success"  data-bs-dismiss="modal" (click)="updateEnseignant()">Update </button>
+                </div>
+            </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,46 @@
+.card-header:first-child {
+  background-color: #0AA1DD;
+  color: white;
+}
+
+
+
+.icons i {
+  color: #b5b3b3;
+  border: 1px solid #b5b3b3;
+  padding: 6px;
+  margin-left: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.activity-done {
+  font-weight: 600;
+}
+
+.list-group li {
+  margin-bottom: 12px;
+}
+
+
+.list li {
+  list-style: none;
+  padding: 10px;
+  border: 1px solid #E8F9FD;
+  border-radius: 5px;
+  background: #E8F9FD;
+}
+
+.glyphicon-remove {
+  color: rgb(196, 159, 159);
+  font-size: 15px;
+}
+
+.date-time {
+  font-size: 15px;
+}
+
+.btn{
+  float: right;
+  margin-top: 10px;
+}

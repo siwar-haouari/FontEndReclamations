@@ -1,0 +1,128 @@
+<!-- groupe -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row mt-2">
+      <div class="col-8">
+      <h2 class=" font-weight-bold text-primary">Liste des groupes</h2>
+    </div>
+    <div class="col-4">
+      <a  class="ajouter btn btn-success "  data-bs-toggle="modal" data-bs-target="#addGroupe" type="submit"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i> <span>Ajouter un groupe</span></a>
+    </div>
+  </div>
+  </div>
+
+  <div class="card-body">
+      <div class="table-responsive">
+        <form class="search-dash  form-inline  mb-4"[formGroup]="GroupeDetail">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  formControlName="nom">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        </form>
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Nom </th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let groupe of GroupeList">
+                  <td>{{groupe.id}}</td>
+                  <td>{{groupe.nom}}</td>
+                      <td>
+
+              <button type="button" class="btn btn-warning mr-2" data-bs-toggle="modal" data-bs-target="#editGroupe" (click)="editGroupe(groupe)"><i class="fa fa-edit" aria-hidden="true"></i> </button>
+              <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+
+
+                                  <!-- Delete Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            voulez vous supprimer ce groupe?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="button" class="btn btn-primary"  (click)="deleteGroupe(groupe)">Delete</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </td>
+                  </tr>
+
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+<!-- groupe -->
+<!-- Add Groupe modal -->
+<div class="modal fade" id="addGroupe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Groupe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <form [formGroup]="GroupeDetail">
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Name </label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="nomHelp">
+                </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addGroupe()">Add Groupe</button>
+                </div>
+            </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Groupe modal -->
+<div class="modal fade" id="editGroupe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Groupe details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="GroupeDetail">
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name </label>
+              <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="nomHelp">
+            </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-success" (click)="updateGroupe()" data-bs-dismiss="modal">Update </button>
+                </div>
+            </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
